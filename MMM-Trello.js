@@ -11,7 +11,7 @@ Module.register("MMM-Trello", {
 
     // Default module config.
     defaults: {
-        reloadInterval: 5 * 60 * 1000, // every 10 minutes
+        reloadInterval: 5 * 60 * 1000, // every 5 minutes
         updateInterval: 10 * 1000, // every 10 seconds
         animationSpeed: 2.5 * 1000, // 2.5 seconds
         showTitle: true,
@@ -51,8 +51,6 @@ Module.register("MMM-Trello", {
 
         this.requestUpdate();
         this.scheduleUpdateRequestInterval();
-
-        this.pause = false;
     },
 
     /* scheduleVisualUpdateInterval()
@@ -64,9 +62,6 @@ Module.register("MMM-Trello", {
         self.updateDom(self.config.animationSpeed);
 
         setInterval(function () {
-            if (self.pause) {
-                return;
-            }
             self.activeItem++;
             self.updateDom(self.config.animationSpeed);
         }, this.config.updateInterval);
@@ -79,10 +74,6 @@ Module.register("MMM-Trello", {
         var self = this;
 
         setInterval(function () {
-            if (self.pause) {
-                return;
-            }
-
             if (self.retry) {
                 self.requestUpdate();
             }
@@ -272,7 +263,7 @@ Module.register("MMM-Trello", {
             Log.error(this.errorMessage);
 
             this.error = true;
-            this.retry = false;
+            //this.retry = false;
 
             this.updateDom(this.config.animationSpeed);
         }

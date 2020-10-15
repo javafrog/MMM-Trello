@@ -64,7 +64,7 @@ module.exports = NodeHelper.create({
         self.trelloConnections[id].get(path, {}, function(error, data) {
             if (error)
             {
-                console.log(error);
+                console.error(error);
                 self.sendSocketNotification("TRELLO_ERROR", {id: id, error: error});
                 return;
             }
@@ -77,7 +77,7 @@ module.exports = NodeHelper.create({
                     self.trelloConnections[id].get(checklistPath, {}, function(error, checklistData) {
                         if (error)
                         {
-                            console.log(error);
+                            console.error(error);
                             return;
                         }
                         self.sendSocketNotification("CHECK_LIST_CONTENT", {id: id, data: checklistData});
