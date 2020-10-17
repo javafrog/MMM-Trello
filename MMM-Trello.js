@@ -121,7 +121,7 @@ Module.register("MMM-Trello", {
                 for (card = startat; card <= endat; card++) {
                     if (this.config.showTitle || this.config.showDueDate) {
                         var name = document.createElement("div");
-                        name.className = "medium light " + (this.config.isCompleted ? "is-completed" : "bright");
+                        name.className = "small light " + (this.config.isCompleted ? "is-completed" : "bright");
 
                         content = "";
                         if (this.config.showTitle) {
